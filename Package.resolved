@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "swift-backport-pattern",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/inekipelov/swift-backport-pattern.git",
+      "state" : {
+        "revision" : "4f91be0ee442fffbe5ac9b6ca2028f43c8408d44",
+        "version" : "0.2.0"
+      }
+    }
+  ],
+  "version" : 2
+}
