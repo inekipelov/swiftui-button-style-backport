@@ -26,12 +26,12 @@ let package = Package(
             dependencies: [
                 .product(name: "Backport", package: "swift-backport-pattern"),
             ],
-            path: "Sources/DefaultButtonStyleBackport"
+            path: "Sources"
         ),
         .testTarget(
             name: "DefaultButtonStyleBackportTests",
             dependencies: ["DefaultButtonStyleBackport"],
-            path: "Tests/DefaultButtonStyleBackportTests"
+            path: "Tests"
         ),
     ]
 )
