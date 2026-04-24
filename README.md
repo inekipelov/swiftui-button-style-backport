@@ -8,11 +8,17 @@ and provides compatibility fallbacks for Liquid Glass button styles.
 
 <p align="center">
   <a href="https://swift.org"><img src="https://img.shields.io/badge/Swift-5.9+-F05138?logo=swift&logoColor=white" alt="Swift 5.9+"></a>
-  <a href="https://developer.apple.com/ios/"><img src="https://img.shields.io/badge/iOS-15.0+-000000?logo=apple" alt="iOS 15.0+"></a>
-  <a href="https://developer.apple.com/macos/"><img src="https://img.shields.io/badge/macOS-12.0+-000000?logo=apple" alt="macOS 12.0+"></a>
-  <a href="https://developer.apple.com/tvos/"><img src="https://img.shields.io/badge/tvOS-15.0+-000000?logo=apple" alt="tvOS 15.0+"></a>
+  <a href="https://developer.apple.com/ios/"><img src="https://img.shields.io/badge/iOS-13.0+-000000?logo=apple" alt="iOS 13.0+"></a>
+  <a href="https://developer.apple.com/macos/"><img src="https://img.shields.io/badge/macOS-10.15+-000000?logo=apple" alt="macOS 10.15+"></a>
+  <a href="https://developer.apple.com/tvos/"><img src="https://img.shields.io/badge/tvOS-13.0+-000000?logo=apple" alt="tvOS 13.0+"></a>
+  <a href="https://developer.apple.com/watchos/"><img src="https://img.shields.io/badge/watchOS-6.0+-000000?logo=apple" alt="watchOS 6.0+"></a>
   <a href="https://developer.apple.com/visionos/"><img src="https://img.shields.io/badge/visionOS-1.0+-000000?logo=apple" alt="visionOS 1.0+"></a>
-  <a href="https://developer.apple.com/watchos/"><img src="https://img.shields.io/badge/watchOS-8.0+-000000?logo=apple" alt="watchOS 8.0+"></a>
+</p>
+
+## Preview
+
+<p align="center">
+  <img src="docs/button-style-preview.gif" alt="DefaultButtonStyleBackport preview animation showing glass button styles" style="max-width: 480px; width: 100%; height: auto;">
 </p>
 
 ## Usage
@@ -35,11 +41,27 @@ Button("Custom Glass") {
     // Action
 }
 .buttonStyle(.backport.glass(.regular.interactive(true).tint(.blue)))
+
+Button("Secondary") {
+    // Action
+}
+.buttonStyle(.backport.borderedProminent)
 ```
 
 On iOS 26, macOS 26, tvOS 26, and watchOS 26, the package uses native SwiftUI
 Liquid Glass button styles. On older supported OS versions and on visionOS, it
 falls back to `.bordered` and `.borderedProminent`.
+
+The system-style helpers are also backported:
+
+```swift
+.buttonStyle(.backport.bordered)
+.buttonStyle(.backport.borderedProminent)
+```
+
+On iOS 13/14, macOS 10.15/11, tvOS 13/14, and watchOS 6/7, where SwiftUI's
+native `.bordered` and `.borderedProminent` styles are unavailable, those
+helpers fall back to `.borderless`.
 
 The configurable glass API mirrors SwiftUI's native syntax through
 `Backported.Glass`:

@@ -5,11 +5,11 @@ import PackageDescription
 let package = Package(
     name: "swiftui-button-style-backport",
     platforms: [
-        .iOS(.v15),
-        .macOS(.v12),
-        .tvOS(.v15),
-        .visionOS(.v1),
-        .watchOS(.v8)
+        .iOS(.v13),
+        .macOS(.v10_15),
+        .tvOS(.v13),
+        .watchOS(.v6),
+        .visionOS(.v1)
     ],
     products: [
         .library(

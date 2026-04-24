@@ -34,6 +34,12 @@ final class DefaultButtonStyleBackportTests: XCTestCase {
     }
 
     @MainActor
+    func testSystemButtonStyleBackportsCompile() {
+        _ = DefaultButtonStyle.backport.bordered
+        _ = DefaultButtonStyle.backport.borderedProminent
+    }
+
+    @MainActor
     func testReadmeButtonStyleExamplesCompile() {
         _ = Button("Continue") {}
             .buttonStyle(.backport.glass)
