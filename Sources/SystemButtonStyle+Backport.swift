@@ -37,7 +37,7 @@ public extension Backport where Content: PrimitiveButtonStyle {
         return .bordered
         #elseif os(watchOS)
         if #available(watchOS 7.0, *) {
-            return watchOSBordered()
+            return .bordered
         } else {
             return .plain
         }
@@ -82,9 +82,9 @@ public extension Backport where Content: PrimitiveButtonStyle {
         }
         #elseif os(watchOS)
         if #available(watchOS 8.0, *) {
-            return watchOSBorderedProminent()
+            return .borderedProminent
         } else if #available(watchOS 7.0, *) {
-            return watchOSBordered()
+            return .bordered
         } else {
             return .plain
         }
@@ -94,17 +94,5 @@ public extension Backport where Content: PrimitiveButtonStyle {
         return .borderedProminent
         #endif
     }
-
-#if os(watchOS)
-    @available(watchOS 7.0, *)
-    private func watchOSBordered() -> some PrimitiveButtonStyle {
-        .bordered
-    }
-
-    @available(watchOS 8.0, *)
-    private func watchOSBorderedProminent() -> some PrimitiveButtonStyle {
-        .borderedProminent
-    }
-#endif
 
 }
