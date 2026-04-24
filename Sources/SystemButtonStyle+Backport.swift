@@ -9,9 +9,10 @@ public extension Backport where Content: PrimitiveButtonStyle {
     /// A backport namespace entry for SwiftUI's bordered button style.
     ///
     /// Falls back to `.borderless` on iOS, Mac Catalyst, and macOS where
-    /// `.bordered` is unavailable. tvOS, watchOS, and visionOS keep `.bordered`
-    /// because that style is available on the minimum supported OS versions
-    /// for those platforms.
+    /// `.bordered` is unavailable. tvOS and visionOS keep `.bordered` because
+    /// that style is available on the minimum supported OS versions for those
+    /// platforms. watchOS uses `.plain` on watchOS 6 and `.bordered` on watchOS
+    /// 7 and later.
     @MainActor
     var bordered: some PrimitiveButtonStyle {
         #if targetEnvironment(macCatalyst)
@@ -32,8 +33,14 @@ public extension Backport where Content: PrimitiveButtonStyle {
         } else {
             return .borderless
         }
-        #elseif os(tvOS) || os(watchOS) || os(visionOS)
+        #elseif os(tvOS) || os(visionOS)
         return .bordered
+        #elseif os(watchOS)
+        if #available(watchOS 7.0, *) {
+            return .bordered
+        } else {
+            return .plain
+        }
         #else
         return .bordered
         #endif
@@ -42,10 +49,11 @@ public extension Backport where Content: PrimitiveButtonStyle {
     /// A backport namespace entry for SwiftUI's bordered prominent button style.
     ///
     /// Falls back to `.borderless` on iOS, Mac Catalyst, and macOS where
-    /// `.borderedProminent` is unavailable. tvOS and watchOS keep `.bordered`
-    /// because `borderless` is unavailable on their minimum supported OS
-    /// versions. visionOS keeps `.borderedProminent` because that style is
-    /// available there.
+    /// `.borderedProminent` is unavailable. tvOS keeps `.bordered` because
+    /// `borderless` is unavailable on its minimum supported OS version.
+    /// watchOS uses `.plain` on watchOS 6, `.bordered` on watchOS 7, and
+    /// `.borderedProminent` on watchOS 8 and later. visionOS keeps
+    /// `.borderedProminent` because that style is available there.
     @MainActor
     var borderedProminent: some PrimitiveButtonStyle {
         #if targetEnvironment(macCatalyst)
@@ -75,8 +83,10 @@ public extension Backport where Content: PrimitiveButtonStyle {
         #elseif os(watchOS)
         if #available(watchOS 8.0, *) {
             return .borderedProminent
-        } else {
+        } else if #available(watchOS 7.0, *) {
             return .bordered
+        } else {
+            return .plain
         }
         #elseif os(visionOS)
         return .borderedProminent
