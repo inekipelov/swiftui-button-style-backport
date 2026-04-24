@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/inekipelov/swift-backport-pattern.git",
       "state" : {
-        "revision" : "d324c33a76de9abf236b5865643b42960b014ded",
-        "version" : "0.1.2"
+        "revision" : "4f91be0ee442fffbe5ac9b6ca2028f43c8408d44",
+        "version" : "0.2.0"
       }
     }
   ],
