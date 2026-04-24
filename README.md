@@ -59,9 +59,10 @@ The system-style helpers are also backported:
 .buttonStyle(.backport.borderedProminent)
 ```
 
-On iOS 13/14, macOS 10.15/11, tvOS 13/14, and watchOS 6/7, where SwiftUI's
-native `.bordered` and `.borderedProminent` styles are unavailable, those
-helpers fall back to `.borderless`.
+On iOS 13/14, macOS 10.15/11, and tvOS 13/14, where SwiftUI's native
+`.bordered` and `.borderedProminent` styles are unavailable, those helpers fall
+back to `.borderless`. On watchOS 6/7, they fall back to `.bordered` because
+`borderless` is unavailable there.
 
 The configurable glass API mirrors SwiftUI's native syntax through
 `Backported.Glass`:
