@@ -1,0 +1,47 @@
+import SwiftUI
+import XCTest
+import DefaultButtonStyleBackport
+
+final class DefaultButtonStyleBackportTests: XCTestCase {
+    @MainActor
+    func testDefaultButtonStyleBackportWrapperCompiles() {
+        let wrapper = DefaultButtonStyle.backport
+
+        XCTAssertTrue(type(of: wrapper.content) == DefaultButtonStyle.self)
+    }
+
+    @MainActor
+    func testBackportModuleIsReexported() {
+        let wrapper: Backport<DefaultButtonStyle> = DefaultButtonStyle.backport
+
+        XCTAssertTrue(type(of: wrapper.content) == DefaultButtonStyle.self)
+        _ = Backported.Glass.clear
+    }
+
+    @MainActor
+    func testGlassButtonStyleBackportsCompile() {
+        _ = DefaultButtonStyle.backport.glass
+        _ = DefaultButtonStyle.backport.glass(.clear)
+        _ = DefaultButtonStyle.backport.glass(.clear.tint(.blue).interactive(false))
+        _ = DefaultButtonStyle.backport.glass(.regular)
+        _ = DefaultButtonStyle.backport.glass(.regular.interactive().tint(.red))
+        _ = DefaultButtonStyle.backport.glass(.identity)
+    }
+
+    @MainActor
+    func testGlassProminentButtonStyleBackportCompiles() {
+        _ = DefaultButtonStyle.backport.glassProminent
+    }
+
+    @MainActor
+    func testReadmeButtonStyleExamplesCompile() {
+        _ = Button("Continue") {}
+            .buttonStyle(.backport.glass)
+
+        _ = Button("Confirm") {}
+            .buttonStyle(.backport.glassProminent)
+
+        _ = Button("Custom Glass") {}
+            .buttonStyle(.backport.glass(.regular.interactive(true).tint(.blue)))
+    }
+}
