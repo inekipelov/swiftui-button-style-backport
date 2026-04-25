@@ -11,8 +11,7 @@ public extension Backport where Content: PrimitiveButtonStyle {
     /// Falls back to `.borderless` on iOS, Mac Catalyst, and macOS where
     /// `.bordered` is unavailable. tvOS and visionOS keep `.bordered` because
     /// that style is available on the minimum supported OS versions for those
-    /// platforms. watchOS uses `.plain` on watchOS 6 and `.bordered` on watchOS
-    /// 7 and later.
+    /// platforms. watchOS falls back to `.automatic`.
     @MainActor
     var bordered: some PrimitiveButtonStyle {
         #if targetEnvironment(macCatalyst)
@@ -36,11 +35,7 @@ public extension Backport where Content: PrimitiveButtonStyle {
         #elseif os(tvOS) || os(visionOS)
         return .bordered
         #elseif os(watchOS)
-        if #available(watchOS 7.0, *) {
-            return .bordered
-        } else {
-            return .plain
-        }
+        return .automatic
         #else
         return .bordered
         #endif
@@ -51,9 +46,8 @@ public extension Backport where Content: PrimitiveButtonStyle {
     /// Falls back to `.borderless` on iOS, Mac Catalyst, and macOS where
     /// `.borderedProminent` is unavailable. tvOS keeps `.bordered` because
     /// `borderless` is unavailable on its minimum supported OS version.
-    /// watchOS uses `.plain` on watchOS 6, `.bordered` on watchOS 7, and
-    /// `.borderedProminent` on watchOS 8 and later. visionOS keeps
-    /// `.borderedProminent` because that style is available there.
+    /// watchOS falls back to `.automatic`. visionOS keeps `.borderedProminent`
+    /// because that style is available there.
     @MainActor
     var borderedProminent: some PrimitiveButtonStyle {
         #if targetEnvironment(macCatalyst)
@@ -81,13 +75,7 @@ public extension Backport where Content: PrimitiveButtonStyle {
             return .bordered
         }
         #elseif os(watchOS)
-        if #available(watchOS 8.0, *) {
-            return .borderedProminent
-        } else if #available(watchOS 7.0, *) {
-            return .bordered
-        } else {
-            return .plain
-        }
+        return .automatic
         #elseif os(visionOS)
         return .borderedProminent
         #else
