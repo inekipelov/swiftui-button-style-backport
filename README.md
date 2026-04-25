@@ -55,8 +55,15 @@ falls back to `.bordered` and `.borderedProminent`.
 The system-style helpers are also backported:
 
 ```swift
+.buttonStyle(.backport.automatic)
+.buttonStyle(.backport.plain)
+.buttonStyle(.backport.borderless)
 .buttonStyle(.backport.bordered)
 .buttonStyle(.backport.borderedProminent)
+.buttonStyle(.backport.link)
+.buttonStyle(.backport.card)
+.buttonStyle(.backport.accessoryBar)
+.buttonStyle(.backport.accessoryBarAction)
 ```
 
 The configurable glass API mirrors SwiftUI's native syntax through

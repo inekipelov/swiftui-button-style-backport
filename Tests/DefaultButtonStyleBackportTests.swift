@@ -35,8 +35,15 @@ final class DefaultButtonStyleBackportTests: XCTestCase {
 
     @MainActor
     func testSystemButtonStyleBackportsCompile() {
+        _ = DefaultButtonStyle.backport.automatic
+        _ = DefaultButtonStyle.backport.plain
+        _ = DefaultButtonStyle.backport.borderless
         _ = DefaultButtonStyle.backport.bordered
         _ = DefaultButtonStyle.backport.borderedProminent
+        _ = DefaultButtonStyle.backport.link
+        _ = DefaultButtonStyle.backport.card
+        _ = DefaultButtonStyle.backport.accessoryBar
+        _ = DefaultButtonStyle.backport.accessoryBarAction
     }
 
     @MainActor
