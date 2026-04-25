@@ -48,31 +48,21 @@ Button("Secondary") {
 .buttonStyle(.backport.borderedProminent)
 ```
 
-On iOS 26, macOS 26, tvOS 26, and watchOS 26, the package uses native SwiftUI
-Liquid Glass button styles. On older supported OS versions and on visionOS, it
-falls back to `.bordered` and `.borderedProminent`.
-
 The system-style helpers are also backported:
 
-```swift
-.buttonStyle(.backport.borderless)
-.buttonStyle(.backport.bordered)
-.buttonStyle(.backport.borderedProminent)
-.buttonStyle(.backport.link)
-.buttonStyle(.backport.card)
-.buttonStyle(.backport.accessoryBar)
-.buttonStyle(.backport.accessoryBarAction)
-```
+| Backport style | Behavior |
+| --- | --- |
+| `.backport.glass` | Uses native `SwiftUI.Glass` on iOS 26, macOS 26, tvOS 26, and watchOS 26. Falls back to `.backport.bordered` elsewhere. |
+| `.backport.glass(_:)` | Mirrors SwiftUI's configurable glass API and falls back to `.backport.bordered` when native glass styles are unavailable. |
+| `.backport.glassProminent` | Uses native prominent glass where available. Falls back to `.backport.borderedProminent` elsewhere. |
+| `.backport.borderless` | Uses native borderless styling when available. Falls back to `.plain` on tvOS 13-16 and watchOS 6-7. |
+| `.backport.bordered` | Uses native bordered styling when available. Falls back to `.backport.borderless` on platforms and OS versions that do not expose it. |
+| `.backport.borderedProminent` | Uses native bordered prominent styling when available. Falls back to `.backport.borderless` on iOS, Mac Catalyst, and macOS, to `.bordered` on tvOS 13-14, and to `.automatic` on watchOS 6-7. |
+| `.backport.link` | Uses native link styling on macOS. Falls back to `.plain` on most other platforms and `.automatic` on watchOS. |
+| `.backport.card` | Uses native card styling on tvOS 14+. Falls back to `.plain` elsewhere and `.automatic` on watchOS. |
+| `.backport.accessoryBar` | Uses native accessory bar styling on macOS 14+. Falls back to `.borderless` on older macOS versions, `.plain` elsewhere, and `.automatic` on watchOS. |
+| `.backport.accessoryBarAction` | Uses native accessory bar action styling on macOS 14+. Falls back to `.borderless` on older macOS versions, `.plain` elsewhere, and `.automatic` on watchOS. |
 
-The configurable glass API mirrors SwiftUI's native syntax through
-`Backported.Glass`:
-
-```swift
-.buttonStyle(.backport.glass(.clear))
-.buttonStyle(.backport.glass(.clear.interactive(false).tint(.blue)))
-.buttonStyle(.backport.glass(.regular.interactive().tint(.red)))
-.buttonStyle(.backport.glass(.identity))
-```
 
 ## Installation
 
