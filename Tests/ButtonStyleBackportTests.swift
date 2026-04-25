@@ -1,10 +1,10 @@
 import SwiftUI
 import XCTest
-import DefaultButtonStyleBackport
+import ButtonStyleBackport
 
-final class DefaultButtonStyleBackportTests: XCTestCase {
+final class ButtonStyleBackportTests: XCTestCase {
     @MainActor
-    func testDefaultButtonStyleBackportWrapperCompiles() {
+    func testButtonStyleBackportWrapperCompiles() {
         let wrapper = DefaultButtonStyle.backport
 
         XCTAssertTrue(type(of: wrapper.content) == DefaultButtonStyle.self)
@@ -31,6 +31,17 @@ final class DefaultButtonStyleBackportTests: XCTestCase {
     @MainActor
     func testGlassProminentButtonStyleBackportCompiles() {
         _ = DefaultButtonStyle.backport.glassProminent
+    }
+
+    @MainActor
+    func testSystemButtonStyleBackportsCompile() {
+        _ = DefaultButtonStyle.backport.borderless
+        _ = DefaultButtonStyle.backport.bordered
+        _ = DefaultButtonStyle.backport.borderedProminent
+        _ = DefaultButtonStyle.backport.link
+        _ = DefaultButtonStyle.backport.card
+        _ = DefaultButtonStyle.backport.accessoryBar
+        _ = DefaultButtonStyle.backport.accessoryBarAction
     }
 
     @MainActor

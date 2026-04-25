@@ -5,16 +5,16 @@ import PackageDescription
 let package = Package(
     name: "swiftui-button-style-backport",
     platforms: [
-        .iOS(.v15),
-        .macOS(.v12),
-        .tvOS(.v15),
-        .visionOS(.v1),
-        .watchOS(.v8)
+        .iOS(.v13),
+        .macOS(.v10_15),
+        .tvOS(.v13),
+        .watchOS(.v6),
+        .visionOS(.v1)
     ],
     products: [
         .library(
-            name: "DefaultButtonStyleBackport",
-            targets: ["DefaultButtonStyleBackport"]
+            name: "ButtonStyleBackport",
+            targets: ["ButtonStyleBackport"]
         ),
     ],
     dependencies: [
@@ -22,16 +22,16 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "DefaultButtonStyleBackport",
+            name: "ButtonStyleBackport",
             dependencies: [
                 .product(name: "Backport", package: "swift-backport-pattern"),
             ],
-            path: "Sources/DefaultButtonStyleBackport"
+            path: "Sources"
         ),
         .testTarget(
-            name: "DefaultButtonStyleBackportTests",
-            dependencies: ["DefaultButtonStyleBackport"],
-            path: "Tests/DefaultButtonStyleBackportTests"
+            name: "ButtonStyleBackportTests",
+            dependencies: ["ButtonStyleBackport"],
+            path: "Tests"
         ),
     ]
 )
