@@ -69,7 +69,7 @@ The system-style helpers are also backported:
 Add the package to your `Package.swift` dependencies:
 
 ```swift
-.package(url: "https://github.com/inekipelov/swiftui-button-style-backport.git", from: "0.1.0")
+.package(url: "https://github.com/inekipelov/swiftui-button-style-backport.git", from: "0.2.0")
 ```
 
 Then add `ButtonStyleBackport` to your target dependencies:
