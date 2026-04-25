@@ -1,6 +1,6 @@
-# DefaultButtonStyleBackport
+# ButtonStyleBackport
 
-`DefaultButtonStyleBackport` is a tiny Swift Package that backports modern
+`ButtonStyleBackport` is a tiny Swift Package that backports modern
 SwiftUI button styles through the reusable `Backport` wrapper.
 
 It builds on [`swift-backport-pattern`](https://github.com/inekipelov/swift-backport-pattern)
@@ -18,14 +18,14 @@ and provides compatibility fallbacks for Liquid Glass button styles.
 ## Preview
 
 <p align="center">
-  <img src="docs/button-style-preview.gif" alt="DefaultButtonStyleBackport preview animation showing glass button styles" style="max-width: 480px; width: 100%; height: auto;">
+  <img src="docs/button-style-preview.gif" alt="ButtonStyleBackport preview animation showing glass button styles" style="max-width: 480px; width: 100%; height: auto;">
 </p>
 
 ## Usage
 
 ```swift
 import SwiftUI
-import DefaultButtonStyleBackport
+import ButtonStyleBackport
 
 Button("Continue") {
     // Action
@@ -72,13 +72,13 @@ Add the package to your `Package.swift` dependencies:
 .package(url: "https://github.com/inekipelov/swiftui-button-style-backport.git", from: "0.1.0")
 ```
 
-Then add `DefaultButtonStyleBackport` to your target dependencies:
+Then add `ButtonStyleBackport` to your target dependencies:
 
 ```swift
-.product(name: "DefaultButtonStyleBackport", package: "swiftui-button-style-backport")
+.product(name: "ButtonStyleBackport", package: "swiftui-button-style-backport")
 ```
 
-`DefaultButtonStyleBackport` depends on
+`ButtonStyleBackport` depends on
 [`swift-backport-pattern`](https://github.com/inekipelov/swift-backport-pattern)
 for the `Backport` wrapper. The package re-exports `Backport`, so importing
-`DefaultButtonStyleBackport` is enough.
+`ButtonStyleBackport` is enough.

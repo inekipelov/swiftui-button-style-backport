@@ -13,8 +13,8 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "DefaultButtonStyleBackport",
-            targets: ["DefaultButtonStyleBackport"]
+            name: "ButtonStyleBackport",
+            targets: ["ButtonStyleBackport"]
         ),
     ],
     dependencies: [
@@ -22,15 +22,15 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "DefaultButtonStyleBackport",
+            name: "ButtonStyleBackport",
             dependencies: [
                 .product(name: "Backport", package: "swift-backport-pattern"),
             ],
             path: "Sources"
         ),
         .testTarget(
-            name: "DefaultButtonStyleBackportTests",
-            dependencies: ["DefaultButtonStyleBackport"],
+            name: "ButtonStyleBackportTests",
+            dependencies: ["ButtonStyleBackport"],
             path: "Tests"
         ),
     ]

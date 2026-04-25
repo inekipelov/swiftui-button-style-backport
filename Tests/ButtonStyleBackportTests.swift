@@ -1,10 +1,10 @@
 import SwiftUI
 import XCTest
-import DefaultButtonStyleBackport
+import ButtonStyleBackport
 
-final class DefaultButtonStyleBackportTests: XCTestCase {
+final class ButtonStyleBackportTests: XCTestCase {
     @MainActor
-    func testDefaultButtonStyleBackportWrapperCompiles() {
+    func testButtonStyleBackportWrapperCompiles() {
         let wrapper = DefaultButtonStyle.backport
 
         XCTAssertTrue(type(of: wrapper.content) == DefaultButtonStyle.self)
