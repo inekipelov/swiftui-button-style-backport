@@ -39,19 +39,19 @@ public extension Backport where Content: PrimitiveButtonStyle {
         if #available(macCatalyst 15.0, *) {
             return .bordered
         } else {
-            return .borderless
+            return .backport.borderless
         }
         #elseif os(iOS)
         if #available(iOS 15.0, *) {
             return .bordered
         } else {
-            return .borderless
+            return .backport.borderless
         }
         #elseif os(macOS)
         if #available(macOS 12.0, *) {
             return .bordered
         } else {
-            return .borderless
+            return .backport.borderless
         }
         #elseif os(tvOS) || os(visionOS)
         return .bordered
