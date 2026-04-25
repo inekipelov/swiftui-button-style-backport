@@ -18,7 +18,7 @@ and provides compatibility fallbacks for Liquid Glass button styles.
 ## Preview
 
 <p align="center">
-  <img src="docs/button-style-preview.gif" alt="ButtonStyleBackport preview animation showing glass button styles" style="max-width: 480px; width: 100%; height: auto;">
+  <img src="docs/button-style-preview.gif" alt="ButtonStyleBackport preview animation showing glass button styles" style="max-width: 480px; max-height: 320px; width: 100%; height: auto;">
 </p>
 
 ## Usage
