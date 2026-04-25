@@ -11,7 +11,8 @@ public extension Backport where Content: PrimitiveButtonStyle {
     /// Falls back to `.borderless` on iOS, Mac Catalyst, and macOS where
     /// `.bordered` is unavailable. tvOS and visionOS keep `.bordered` because
     /// that style is available on the minimum supported OS versions for those
-    /// platforms. watchOS falls back to `.automatic`.
+    /// platforms. watchOS uses `.automatic` as the fallback where `.bordered`
+    /// is unavailable.
     @MainActor
     var bordered: some PrimitiveButtonStyle {
         #if targetEnvironment(macCatalyst)
@@ -35,7 +36,7 @@ public extension Backport where Content: PrimitiveButtonStyle {
         #elseif os(tvOS) || os(visionOS)
         return .bordered
         #elseif os(watchOS)
-        return .automatic
+        return WatchOSBorderedButtonStyleBackport()
         #else
         return .bordered
         #endif
@@ -46,8 +47,9 @@ public extension Backport where Content: PrimitiveButtonStyle {
     /// Falls back to `.borderless` on iOS, Mac Catalyst, and macOS where
     /// `.borderedProminent` is unavailable. tvOS keeps `.bordered` because
     /// `borderless` is unavailable on its minimum supported OS version.
-    /// watchOS falls back to `.automatic`. visionOS keeps `.borderedProminent`
-    /// because that style is available there.
+    /// watchOS uses `.automatic` as the fallback where `.borderedProminent` is
+    /// unavailable. visionOS keeps `.borderedProminent` because that style is
+    /// available there.
     @MainActor
     var borderedProminent: some PrimitiveButtonStyle {
         #if targetEnvironment(macCatalyst)
@@ -75,7 +77,7 @@ public extension Backport where Content: PrimitiveButtonStyle {
             return .bordered
         }
         #elseif os(watchOS)
-        return .automatic
+        return WatchOSBorderedProminentButtonStyleBackport()
         #elseif os(visionOS)
         return .borderedProminent
         #else
@@ -84,3 +86,31 @@ public extension Backport where Content: PrimitiveButtonStyle {
     }
 
 }
+
+#if os(watchOS)
+private struct WatchOSBorderedButtonStyleBackport: PrimitiveButtonStyle {
+    @ViewBuilder
+    func makeBody(configuration: Configuration) -> some View {
+        if #available(watchOS 7.0, *) {
+            Button(configuration)
+                .buttonStyle(.bordered)
+        } else {
+            Button(configuration)
+                .buttonStyle(.automatic)
+        }
+    }
+}
+
+private struct WatchOSBorderedProminentButtonStyleBackport: PrimitiveButtonStyle {
+    @ViewBuilder
+    func makeBody(configuration: Configuration) -> some View {
+        if #available(watchOS 8.0, *) {
+            Button(configuration)
+                .buttonStyle(.borderedProminent)
+        } else {
+            Button(configuration)
+                .buttonStyle(.automatic)
+        }
+    }
+}
+#endif
