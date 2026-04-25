@@ -55,8 +55,6 @@ falls back to `.bordered` and `.borderedProminent`.
 The system-style helpers are also backported:
 
 ```swift
-.buttonStyle(.backport.automatic)
-.buttonStyle(.backport.plain)
 .buttonStyle(.backport.borderless)
 .buttonStyle(.backport.bordered)
 .buttonStyle(.backport.borderedProminent)
