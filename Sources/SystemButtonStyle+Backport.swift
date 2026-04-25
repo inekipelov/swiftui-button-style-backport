@@ -36,7 +36,11 @@ public extension Backport where Content: PrimitiveButtonStyle {
         #elseif os(tvOS) || os(visionOS)
         return .bordered
         #elseif os(watchOS)
-        return WatchOSBorderedButtonStyleBackport()
+        if #available(watchOS 7.0, *) {
+            return .bordered
+        } else {
+            return .automatic
+        }
         #else
         return .bordered
         #endif
@@ -77,7 +81,11 @@ public extension Backport where Content: PrimitiveButtonStyle {
             return .bordered
         }
         #elseif os(watchOS)
-        return WatchOSBorderedProminentButtonStyleBackport()
+        if #available(watchOS 8.0, *) {
+            return .borderedProminent
+        } else {
+            return .automatic
+        }
         #elseif os(visionOS)
         return .borderedProminent
         #else
@@ -86,31 +94,3 @@ public extension Backport where Content: PrimitiveButtonStyle {
     }
 
 }
-
-#if os(watchOS)
-private struct WatchOSBorderedButtonStyleBackport: PrimitiveButtonStyle {
-    @ViewBuilder
-    func makeBody(configuration: Configuration) -> some View {
-        if #available(watchOS 7.0, *) {
-            Button(configuration)
-                .buttonStyle(.bordered)
-        } else {
-            Button(configuration)
-                .buttonStyle(.automatic)
-        }
-    }
-}
-
-private struct WatchOSBorderedProminentButtonStyleBackport: PrimitiveButtonStyle {
-    @ViewBuilder
-    func makeBody(configuration: Configuration) -> some View {
-        if #available(watchOS 8.0, *) {
-            Button(configuration)
-                .buttonStyle(.borderedProminent)
-        } else {
-            Button(configuration)
-                .buttonStyle(.automatic)
-        }
-    }
-}
-#endif
