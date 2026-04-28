@@ -73,7 +73,7 @@ jobs:
           - name: iOS 26 simulator
             destination: platform=iOS Simulator,name=iPhone 17
           - name: tvOS 26 simulator
-            destination: platform=tvOS Simulator,name=Apple TV
+            destination: generic/platform=tvOS Simulator
 
     steps:
       - name: Checkout repository
