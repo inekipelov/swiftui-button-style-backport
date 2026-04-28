@@ -8,6 +8,15 @@
         "revision" : "4f91be0ee442fffbe5ac9b6ca2028f43c8408d44",
         "version" : "0.2.0"
       }
+    },
+    {
+      "identity" : "swiftui-glass-type-backport",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/inekipelov/swiftui-glass-type-backport.git",
+      "state" : {
+        "revision" : "78b0e0628f5c19404f59d1cae968f95f6793f6b8",
+        "version" : "1.0.0"
+      }
     }
   ],
   "version" : 2
